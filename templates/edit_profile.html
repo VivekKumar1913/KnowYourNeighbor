@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome to Neighbourhood</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="//cdn.jsdelivr.net/alertifyjs/1.10.0/alertify.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/alertify.min.css" />
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/alertifyjs/1.10.0/css/themes/bootstrap.min.css" />
+        <script src="app.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .body-background {
+                background-color:lightblue;
+            }
+            .img-class {
+                background-image: url("https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
+
+                /* Full height */
+                height: 100%;
+
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size:inherit;
+            }
+        </style>
+    </head>
+    <body class="img-class">
+        <!-- <div class="img-class"> -->
+        <div class="wrapper">
+            <header class="main-header">
+                        <nav class="navbar">
+                            <div class="container">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="/">knowYourNeighborhood</a>
+                                </div>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Feed
+                                            <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/block-feed">Block Feed</a></li>
+                                                <li><a href="/hood-feed">Hood Feed</a></li>
+                                                <li><a href="/friend-feed">Friend Feed</a></li>
+                                                <li><a href="/neighbor-feed">Neighbor Feed</a></li>
+                                            </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Map View
+                                            <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="/map_threads">Threads</a></li>
+                                                <li><a href="/map_friends">Friends</a></li>
+                                                <li><a href="/map_neighbors">Neighbors</a></li>
+                                            </ul>
+                                    </li>
+
+                                    <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                                    <li><a href="/logout" class="btn-danger navbar-right">Logout</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </header>
+        <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
+                <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8" style="background-color: rgba(255, 255, 255, 0.8);">
+                    <form action="" target="_blank" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />  
+                        <h1 class="text-center">Edit Profile</h1>
+                        <div class="form-group">
+                            <label class="control-label" for="fname"><b>First Name</b></label>
+                            <input type="text" name="fname" class="form-control" value="" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="iname"><b>Last Name</b></label>
+                            <input type="text" name="lname" class="form-control" value="" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="email"><b>Email Address</b></label>
+                            <input type="email" name="email" class="form-control" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="addressLine1"><b>Street Address</b></label>
+                            <input type="text" name="addressLine1" class="form-control" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="addressLine2"><b>Address Line 2</b></label>
+                            <input type="text" name="addressLine2" class="form-control" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="city"><b>City</b></label>
+                            <input type="text" name="city" class="form-control" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="state"><b>State</b></label>
+                            <input type="text" name="state" class="form-control" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="zipcode"><b>Zip</b></label>
+                            <input type="text" name="xipcode" class="form-control" required/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="email_pref"><b>Do you want to update notifications on email?</b></label><br/>
+                            <input type="radio" class="radio-first" name="email_pref" value="yes">Yes<br/>
+                            <input type="radio" class="radio-last" name="email_pref" value="no">No<br/>
+                        </div>
+                        <label class="control-label">Profile Picture</label>	
+                            <div class="avatar-upload">	
+                                <div class="avatar-edit">	
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"/>	
+                                        <label id="labelImageUpload" for="imageUpload"></label>	
+                                </div>
+                                <div class="avatar-preview">	
+                                    <div id="imagePreview" style="background-image: url(../static/img/user_icon.png);">	
+                                    </div>	
+                                </div>	
+                            </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-lg btn-block sign_up"> Update Profile</button>
+                        </div>
+                        <!-- <input class="edit_profile" type="submit" value="Edit Profile"/> -->
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
+        </div>
+    </div>
+    </body>
+    {% if message %}
+    <script>
+    alertify.{{message.type}}("{{ message.message }}");
+    </script>
+    {% endif %}
+</html>
